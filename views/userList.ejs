@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Login </title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <% for(users of user){%> <article>
+      <div>
+       Your first name here: <%= users.first_name %>
+      </div>
+      <div>  
+        Your last name here:  <%= users.last_name %>
+      </div>
+    <div> Your avatar here: <br>
+   <img src="<%= users.avatar %>" alt="Prueba imagen" class="avatar" style="width: 50%;">
+    </div>
+   <div> Your e-mail here: <%= users.email %>
+   </div>
+  </article>
+  <br>
+  <br>
+  <br>
+  <%}%>
+   <a href="/">Home</a>
+
+
+</body>
+</html>
