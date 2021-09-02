@@ -1,0 +1,23 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: chocolate;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.navbar{
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  background-color: cadetblue;
+border: cornsilk 5px solid;
+}
+
+.navbar a{
+  font-size: large;
+  color: blueviolet;
+  font-weight: bolder;
+  text-decoration: none;
+}

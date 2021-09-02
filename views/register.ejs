@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Login </title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <%- include('partials/header') %>
+    <p>Welcome to my login page</p>
+
+    <form action="/register" enctype="multipart/form-data" method="POST" id="register-form>
+    <label for="first-name"> First name: </label>
+    <input type="text" name="first-name" id="first-name" required placeholder="Insert first name here">
+    <br>
+    <label for="last-name"> Last name: </label>
+    <input type="text" name="last-name" id="last-name" required placeholder="Insert last name here">
+    <br>
+    <label for="email"> E-mail: </label>
+    <input type="email" name="email" id="email" required placeholder="Insert e-mail here">
+    <br>
+    <label for="password"> Password: </label>
+    <input type="password" name="password" required id="password">
+    <br>
+    <label for="avatar"> Avatar: </label>
+    <input type="file" name="avatar" accept=".jpg, .gif, .mp4, .png" required id="avatar">
+    <br>
+    <button type="submit"> Register </button>
+    </form>
+
+  </body>
+</html>
