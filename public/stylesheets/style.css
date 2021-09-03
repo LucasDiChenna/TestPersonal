@@ -1,3 +1,7 @@
+*{
+  margin: 0%;
+}
+
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: chocolate;
@@ -9,15 +13,38 @@ a {
 
 .navbar{
   display: flex;
-  width: 100%;
+  width: auto;
   justify-content: space-around;
-  background-color: cadetblue;
-border: cornsilk 5px solid;
+  background-color: aliceblue;
+  padding: 5% 0;
+  border: gold 5px solid;
+
 }
 
 .navbar a{
   font-size: large;
-  color: blueviolet;
+  color: cornflowerblue;
   font-weight: bolder;
   text-decoration: none;
+  transition: ease-in-out 0.5s all;
+}
+
+.navbar a:hover{
+background-color: goldenrod;
+padding: 0 5% ;
+color: navy;
+}
+
+.userBox{
+  background-color: beige;
+  margin: 0 10%;
+  padding: 5% 0;
+  width: 20%;
+  text-align: center;
+}
+
+.userlist{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }

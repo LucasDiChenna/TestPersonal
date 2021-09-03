@@ -6,20 +6,32 @@
   </head>
   <body>
     <%- include('partials/header') %>
-    <p>Welcome to my login page</p>
+    <p>Welcome to my register page</p>
 
     <form action="/register" enctype="multipart/form-data" method="POST" id="register-form">
     <label for="first_name"> First name: </label>
-    <input type="text" name="first_name" id="first_name" required placeholder="Insert first name here">
+    <input type="text" name="first_name" id="first_name" required placeholder="Insert first name here" value="<%= locals.old && old.first_name %>">
+    <% if (locals.errors && errors.first_name) { %>
+    <p class="errorSign"><%= errors.first_name.msg %></p>
+    <% } %> 
     <br>
     <label for="last_name"> Last name: </label>
-    <input type="text" name="last_name" id="last_name" required placeholder="Insert last name here">
+    <input type="text" name="last_name" id="last_name" required value="<%= locals.old && old.last_name %>" placeholder="Insert last name here">
+    <% if (locals.errors && errors.last_name) { %>
+      <p class="errorSign"><%= errors.last_name.msg %></p>
+      <% } %> 
     <br>
     <label for="email"> E-mail: </label>
-    <input type="email" name="email" id="email" required placeholder="Insert e-mail here">
+    <input type="email" name="email" id="email" value="<%= locals.old && old.email %>" required placeholder="Insert e-mail here">
+    <% if (locals.errors && errors.email) { %>
+      <p class="errorSign"><%= errors.email.msg %></p>
+      <% } %> 
     <br>
     <label for="password"> Password: </label>
     <input type="password" name="password" required id="password">
+    <% if (locals.errors && errors.password) { %>
+      <p class="errorSign"><%= errors.password.msg %></p>
+      <% } %> 
     <br>
     <label for="avatar"> Avatar: </label>
     <input type="file" name="avatar" accept=".jpg, .gif, .mp4, .png" required id="avatar">

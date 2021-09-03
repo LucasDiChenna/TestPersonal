@@ -2,10 +2,23 @@ var express = require('express');
 var router = express.Router();
 const fs = require("fs");
 const path = require("path");
+const multer = require("multer");
+const { check } = require("express-validator");
+
+const validateRegister = [ 
+   check("first_name")
+   .isLength({ min: 4 }).withMessage("You have to give a valid name for your account.")
+   .notEmpty().withMessage("You have to set your account's first name."),
+   check("last_name").notEmpty().withMessage("You have to set your account's last name."),
+   check("email")
+   .notEmpty().withMessage("You have to set your account's email.").bail()
+   .isEmail().withMessage("You have to set a valid e-mail for your account."),
+   check("password")
+   .notEmpty().withMessage("You have to set your account's password.").bail()
+   .isLength( { min: 5 }).withMessage("Your password must be longer than 8 characters."),
+];
 
 let mainController = require("../controllers/mainController")
-
-const multer = require("multer");
 
 const storage = multer.diskStorage({ 
     destination: function (req, file, cb) { 
@@ -21,8 +34,10 @@ var upload = multer({ storage: storage})
 router.get('/', mainController.index);
 router.get('/login', mainController.login);
 router.get('/register', mainController.register);
-router.post('/register', upload.single("avatar"), mainController.processRegister);
+router.post('/register', [validateRegister, upload.single("avatar")], mainController.processRegister);
 router.get('/userlist', mainController.userList);
 router.get('/:id', mainController.userByID);
+router.get('/:id/edit', mainController.editUser);
+router.put('/:id/edit', [validateRegister, upload.single("avatar")], mainController.updateUser);
 
 module.exports = router;

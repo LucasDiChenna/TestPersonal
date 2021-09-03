@@ -5,6 +5,7 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
+    <%- include('partials/header') %>
       <div>
        Your first name here: <%= user.first_name %>
       </div>
@@ -17,8 +18,9 @@
    <div> Your e-mail here: <%= user.email %>
    </div>
 
+   <a href="/<%= user.id %>/edit">Edit</a>
    <a href="/">Home</a>
 
 
-</body>
+  </body>
 </html>

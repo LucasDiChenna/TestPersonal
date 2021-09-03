@@ -5,23 +5,30 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <% for(users of user){%> <article>
+    
+    <%- include('partials/header') %>
+
+    <section class="userlist">
+    <% for(users of user){%> 
+    <article class="userBox">
+     <a href="/<%= users.id %>"> 
       <div>
        Your first name here: <%= users.first_name %>
       </div>
       <div>  
         Your last name here:  <%= users.last_name %>
       </div>
-    <div> Your avatar here: <br>
-   <img src="<%= users.avatar %>" alt="Prueba imagen" class="avatar" style="width: 50%;">
-    </div>
-   <div> Your e-mail here: <%= users.email %>
-   </div>
-  </article>
-  <br>
-  <br>
-  <br>
+     </a>
+      <div> Your avatar here: <br>
+        <img src="<%= users.avatar %>" alt="Prueba imagen" class="avatar" style="width: 50%;">
+      </div>
+      <div> 
+        Your e-mail here: <%= users.email %>
+      </div>
+    </article>
   <%}%>
+  
+</section>
    <a href="/">Home</a>
 
 
