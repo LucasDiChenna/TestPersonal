@@ -48,3 +48,7 @@ color: navy;
   flex-direction: row;
   flex-wrap: wrap;
 }
+
+.detailIMG{
+  width: 50%;
+}

@@ -9,21 +9,25 @@
     <%- include('partials/header') %>
 
     <section class="userlist">
-    <% for(users of user){%> 
+    <% for(songs of song){%> 
     <article class="userBox">
-     <a href="/users/<%= users.id %>"> 
+     <a href="/<%= songs.id %>"> 
       <div>
-       Your first name here: <%= users.first_name %>
+       Name: <%= songs.nombre %>
       </div>
-      <div>  
-        Your last name here:  <%= users.last_name %>
-      </div>
-     </a>
-      <div> Your avatar here: <br>
-        <img src="<%= users.avatar %>" alt="Prueba imagen" class="avatar" style="width: 50%;">
+    </a>
+    <div>  
+      Writer:  <%= songs.compositor %>
+    </div>
+      <div> 
+        Duration: <%= songs.milisegundos *1.6666666666667E-05 %>  
       </div>
       <div> 
-        Your e-mail here: <%= users.email %>
+        Price: <%= songs.precio_unitario %>
+      </div>
+     
+      <div> 
+        Album: <a href="/album/<%= songs.id_album %>"><%= songs.albumes.titulo %></a>
       </div>
     </article>
   <%}%>

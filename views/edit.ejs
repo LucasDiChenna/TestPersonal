@@ -7,7 +7,7 @@
   <body>
     <%- include('partials/header') %>
 
-    <form action="/<%= user.id %>/edit?_method=PUT" enctype="multipart/form-data" method="POST" id="avatar">
+    <form action="/users/<%= user.id %>/edit?_method=PUT" enctype="multipart/form-data" method="POST" id="avatar">
       <div >
         <div >
             <img src="<%= user.avatar %>">

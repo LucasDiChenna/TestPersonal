@@ -18,7 +18,7 @@ const validateRegister = [
    .isLength( { min: 5 }).withMessage("Your password must be longer than 8 characters."),
 ];
 
-let mainController = require("../controllers/mainController")
+let mainController = require("../src/controllers/mainController")
 
 const storage = multer.diskStorage({ 
     destination: function (req, file, cb) { 
@@ -35,9 +35,9 @@ router.get('/', mainController.index);
 router.get('/login', mainController.login);
 router.get('/register', mainController.register);
 router.post('/register', [validateRegister, upload.single("avatar")], mainController.processRegister);
-router.get('/userlist', mainController.userList);
-router.get('/:id', mainController.userByID);
-router.get('/:id/edit', mainController.editUser);
-router.put('/:id/edit', [validateRegister, upload.single("avatar")], mainController.updateUser);
+router.get('/songlist', mainController.songList);
+router.get('/album/:id', mainController.albumByID);
+router.get('/:id', mainController.songByID);
+
 
 module.exports = router;

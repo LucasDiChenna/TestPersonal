@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Login </title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <%- include('partials/header') %>
+      <div>
+       Name: <%= song.nombre %>
+      </div>
+      <div>  
+        Writer:  <%= song.compositor %>
+      </div>
+      <div>  
+        Album:  <a href="/album/<%= song.id_album %>"><%= song.albumes.titulo %></a>
+      </div>
+    </div>
+   <div> Gender: <%= song.generos.nombre %>
+   </div>
+
+   <a href="/songs/<%= song.id %>/edit">Edit</a>
+   <a href="/">Home</a>
+
+
+  </body>
+</html>

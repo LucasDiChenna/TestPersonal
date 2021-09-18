@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Album list of songs </title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    
+    <%- include('partials/header') %>
+
+      <% for(songs of song){%> 
+      <h2><a href="/<%= songs.id %> "><%= songs.nombre %> </a></h2>
+      <p>Song duration: <%= songs.milisegundos *1.6666666666667E-05 %>  </p>
+      <p>Song weight: <%= songs.bytes *0.00097656 %> kb </p>
+        <br>
+
+      <%}%>
+  
+   <a href="/">Home</a>
+
+
+</body>
+</html>

@@ -1,10 +1,11 @@
+const db = require("../database/models");
 const { validationResult } = require('express-validator');
 const fs = require('fs');
 const path = require('path');
-const Users = require("../models/users");
+const Users = require("../../modelos/users");
 const methodOverride =  require('method-override');
 
-const controller = {
+const mainController = {
     index: (req,res) =>{
         res.render("index", { title: "La prueba de fuego"})
     },
@@ -47,37 +48,27 @@ const controller = {
      } 
     },
 
-    editUser:(req,res)=>{
-        let userToEdit = Users.findUserByID(req.params.id)
-        res.render('edit',{user: userToEdit})
-        
+    
+    songList: (req,res)=>{
+       db.Cancion.findAll({
+           include:[{association:"albumes"},{association:"generos"}]
+       })
+    
+       .then(song => res.render("songList",{song: song}))
     },
-
-    updateUser:(req,res)=>{
-        let data = Users.fetchUsers();
-        let userToModify = Users.findUserByID(req.params.id);
-        
-        userToModify.first_name = req.body.first_name,
-        userToModify.last_name = req.body.last_name,
-        userToModify.email = req.body.email,
-        userToModify.password = req.body.password,
-        userToModify.avatar = "../../images/avatar/"+req.file.filename
-        Users.modifyData(data);
-        
-        res.render('userDetail',{user: userToModify})
-
-    } ,
-
-    userList: (req,res)=>{
-        let data = Users.fetchUsers();
-        res.render("userList",{user: data})
+    songByID: (req,res)=>{
+        db.Cancion.findByPk(req.params.id,{
+            include:[{association:"albumes"},{association:"generos"}]})
+        .then(song => res.render("songDetail", {song: song})); 
     },
-
-    userByID: (req,res)=>{
-     let userFound = Users.findUserByID(req.params.id)
-
-        res.render("userDetail", {user: userFound}) 
-    }
+    albumByID: (req,res)=>{
+        db.Cancion.findAll({
+            where: { id_album: req.params.id},
+            include:[{association:"albumes"}]})
+        .then(song => res.render("albumDetail", {song: song}))
+        .catch(err => console.log(err))
+    },
+    
 }
 
-module.exports = controller;
+module.exports = mainController;

@@ -12,13 +12,13 @@
       <div>  
         Your last name here:  <%= user.last_name %>
       </div>
-    <div> Your avatar here: <br>
+    <div class="detailIMG"> Your avatar here: <br>
    <img src="<%= user.avatar %>" alt="Prueba imagen" class="avatar" style="width: 50%;">
     </div>
    <div> Your e-mail here: <%= user.email %>
    </div>
 
-   <a href="/<%= user.id %>/edit">Edit</a>
+   <a href="/users/<%= user.id %>/edit">Edit</a>
    <a href="/">Home</a>
 
 
