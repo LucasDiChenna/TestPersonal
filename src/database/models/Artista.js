@@ -24,7 +24,8 @@ module.exports = (sequelize, DataTypes ) =>{
             as: "albumes",
 
             foreignKey: "id_artista"
-        })
+        });
+        
     }
 
 

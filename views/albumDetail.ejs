@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title> Album list of songs </title>
+    <title> <%= songs.albumes.titulo %> </title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
     
     <%- include('partials/header') %>
-
+      <h1><%= songs.albumes.titulo %></h1>
+      <h1><%= songs.albumes.id_artista %></h1>
       <% for(songs of song){%> 
-      <h2><a href="/<%= songs.id %> "><%= songs.nombre %> </a></h2>
-      <p>Song duration: <%= songs.milisegundos *1.6666666666667E-05 %>  </p>
-      <p>Song weight: <%= songs.bytes *0.00097656 %> kb </p>
+      <ul><li><h2><a href="/song/<%= songs.id %> "><%= songs.nombre %> </a></h2></li>
+        <li> <p>Song duration: <%= songs.milisegundos *1.6666666666667E-05 %>  </p></li>
+        <li><p>Song weight: <%= songs.bytes *0.00097656 %> kb </p></li>
         <br>
-
+      </ul>
       <%}%>
   
    <a href="/">Home</a>

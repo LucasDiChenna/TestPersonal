@@ -23,6 +23,9 @@ module.exports = (sequelize, DataTypes ) =>{
         compositor:{
             type: DataTypes.STRING
         },
+        cover:{
+            type: DataTypes.STRING
+        },
         milisegundos:{
             type: DataTypes.NUMBER
         },
@@ -51,6 +54,11 @@ module.exports = (sequelize, DataTypes ) =>{
 
             foreignKey: "id_genero"
         });
+        /*Cancion.belongsTo(models.Artista, {
+            as: "artistas",
+
+            foreignKey: "id_artista"
+        });*/
     };
    
     return Cancion;

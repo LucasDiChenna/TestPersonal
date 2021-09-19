@@ -47,7 +47,32 @@ const mainController = {
         res.render("register", { errors: errors.mapped(), old: req.body });
      } 
     },
-
+    uploadSong: (req,res) => {
+        res.render("uploadSong")
+    },
+    upload: (req,res) => {
+        let errors = validationResult(req);
+        let infoBody = JSON.parse(JSON.stringify(req.body));
+        console.log(req.file);
+       // if (errors.isEmpty()) {
+            db.Cancion.create({
+                nombre: infoBody.name,
+                id_genero: infoBody.id_genero,
+                compositor: infoBody.compositor,
+                milisegundos: infoBody.milisegundos,
+                precio_unitario: infoBody.precio,
+                bytes: infoBody.bytes,
+                id_genero: infoBody.id_genero
+            })
+            .then(res.redirect("/"))
+   /* }
+    else{
+        console.log(req.body);
+        console.log(infoBody);
+        console.log(errors);
+        res.render("uploadSong", { errors: errors.mapped(), old: req.body });
+     } */
+    },
     
     songList: (req,res)=>{
        db.Cancion.findAll({
@@ -66,6 +91,13 @@ const mainController = {
             where: { id_album: req.params.id},
             include:[{association:"albumes"}]})
         .then(song => res.render("albumDetail", {song: song}))
+        .catch(err => console.log(err))
+    },
+    genderByID: (req,res)=>{
+        db.Cancion.findAll({
+            where: { id_genero: req.params.id},
+            include:[{association:"albumes"},{association:"generos"}]})
+        .then(song => res.render("genderDetail", {song: song}))
         .catch(err => console.log(err))
     },
     
